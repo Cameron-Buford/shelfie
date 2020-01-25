@@ -1,38 +1,162 @@
-.App {
-  text-align: center;
+.header { 
+  background-color: #AB2A19;
+  height: 100px;
+  color: white;
+  font-weight: bold;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.body {
+  background-color: lightgoldenrodyellow;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+	align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+
+.submit-container {
+  background-color: #3AD886;
+  display: flex;
+  height: 500px;
+  width: 600px;
+  position: sticky;
+	flex-direction: column;
+	border-radius: 12px;
+	justify-content: space-between;
+	align-items: center;
+	
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
+
+
+
+
+
+.img-box {
+  background-color: whitesmoke;
+  height: 300px;
+  width: 500px;
+}
+
+
+
+
+
+.input-boxes {
+  background-color: #3AD886;
+  height: 100px;
+
+}
+
+
+
+
+
+
+
+
+.imagebox {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 500px;
+  height: 50px;
+  background-color: #3AD886;
 }
 
-.App-link {
-  color: #61dafb;
+.image-url {
+  background-color: #3AD886;
+  font-size: large;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.img-input {
+  width: 500px;
 }
+
+
+
+
+
+.productbox {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 50px;
+
+}
+
+.product-url {
+  background-color: #3AD886;
+  font-size: large;
+  font-weight: bold;
+}
+
+.product-input {
+  width: 500px;
+}
+
+
+
+
+.pricebox {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 50px;
+
+}
+
+.price-url {
+  background-color: #3AD886;
+  font-size: large;
+  font-weight: bold;
+
+}
+
+.price-input {
+  width: 500px;
+
+}
+
+
+
+
+
+
+
+
+.button-box {
+  background-color: #3AD886;
+  display: flex;
+  justify-content: space-between;
+	align-items: center;
+
+}
+
+.cancel-button {
+  border-radius: 5px;
+  height: 40px;
+  background-color: #ED6B5A;
+  border: none;
+}
+
+.add-inventory-button {
+  border-radius: 5px;
+  height: 40px;
+  background-color: #ED6B5A;
+  border: none;
+}
+      
+
+
+.display-box {
+        width: 400px;
+        height: 200px;
+        background-color: #D34535;
+        font-size: small;
+        border-radius: 25px;
+      }

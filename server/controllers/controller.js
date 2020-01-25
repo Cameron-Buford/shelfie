@@ -1,8 +1,8 @@
 module.exports = {
-    getProduct: (req, res) => {
+    getProducts: (req, res) => {
         const db = req.app.get('db')
         
-            db.get_products().then(products => {
+            db.get_inventory().then(products => {
                 res.status(200).send(products)
             }).catch(err => {
                 res.status(500).send(err)
@@ -10,10 +10,10 @@ module.exports = {
 
     },
     postProduct: (req, res) => {
-        const db = req.app.get('app')
-            const {pic, name, price} = req.body;
+        const db = req.app.get('db')
+            const {name, price, pic} = req.body;
 
-            db.post_products(pic, name, price).then(products => {
+            db.post_product(name, price, pic).then(products => {
                 res.status(200).send(products)
             }).catch(err => {
                 res.status(500).send(err)
@@ -23,9 +23,9 @@ module.exports = {
     putProduct: (req, res) => {
         const db = req.app.get('db')
         const {product_id} = req.params
-        const {pic, name, price} = req.body
+        const {name, price, pic} = req.body
 
-        db.put_products(product_id, pic, name, price).then(products => {
+        db.put_product(product_id, name, price, pic).then(products => {
             res.status(200).send(products)
         }).catch(err => {
             res.status(500).send(err)
@@ -33,9 +33,9 @@ module.exports = {
     },
     deleteProduct: (req, res) => {
         const db = req.app.get('db')
-        const {product_id} = req.params;
+        const {product_id} = req.params
 
-        db.delete_products(product_id).then(products => {
+        db.delete_product(product_id).then(products => {
             res.status(200).send(products)
         }).catch(err => {
             res.status(500).send(err)
@@ -43,3 +43,4 @@ module.exports = {
 
     }
 }
+
