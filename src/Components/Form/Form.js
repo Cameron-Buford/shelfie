@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
-import Axios from 'axios'
+import axios from 'axios'
 
 class Form extends Component{
     constructor(){
         super()
         this.state = {
+            inventoryUrl: '/api/inventory',
+            edit: false,
 
             name: '',
             price: 0,
@@ -12,10 +14,48 @@ class Form extends Component{
         }
     }
 
+
+    componentDidMount() {
+       console.log(this.props.match.params)
+        if(this.props.match.params.id){
+            // console.log('hit')
+            axios.get(`/api/product/${this.props.match.params.id}`).then(results => {
+                const {name, price, pic}= results.data[0];
+                // console.log(results.data)
+                this.setState({name, price, pic, edit: true})
+            })
+        }
+    }
+
     handleChange = ({name, value}) => {
         this.setState({[name]: value})
 
     }
+
+    submitProduct = (products) => {
+        const {inventoryUrl} = this.state
+        axios.post(inventoryUrl, products).then( results => {
+            // this.setState({products: results.data})
+            this.props.history.push('/')
+        }).catch(err => console.log(err))
+    
+    
+    
+    }
+
+    editProduct= () => {
+        const {inventoryUrl, name, price, pic} = this.state
+        console.log(true)
+        axios.put(`${inventoryUrl}/${this.props.match.params.id}`, {name, price, pic}).then( results => {
+            // this.setState({products: results.data})
+            this.props.history.push('/')
+        }).catch(err => console.log(err))
+    
+    
+    
+    }
+
+    
 
 
    
@@ -25,7 +65,8 @@ class Form extends Component{
 
     render(){
         const {name, price, pic} = this.state;
-        const {submitProduct} = this.props
+        // const {submitProduct} = this.state
+        // console.log(this.props)
 
 
 
@@ -78,15 +119,23 @@ class Form extends Component{
             
             
             <div className= 'button-box'>
-                <button className= 'cancel-button'>cancel</button>
+                <button className= 'cancel-button' onClick= {() => this.props.history.push('/')}>cancel</button>
 
-                <button className= 'add-inventory-button'
+               {!this.state.edit ? <button className= 'add-inventory-button'
                     onClick = {() => {
-                    submitProduct({name, price, pic})
+                    this.submitProduct({name, price, pic})
                     this.setState({name: '', price: '', pic: ''})
-                }}> Add to Inventory </button>
+                }}> Add to Inventory </button> :
+                <button 
+                onClick = {() => {
+                    this.editProduct()
+                }}
+                
+                >Update</button>
+            }
 
             </div>
+
             </div>
 
 

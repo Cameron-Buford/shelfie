@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {withRouter} from 'react-router-dom'
 
 class Product extends Component{
     constructor() {
@@ -22,7 +23,8 @@ class Product extends Component{
 
 
     editToggle = () => {
-        this.setState({edit: !this.state.edit})
+        // this.setState({edit: !this.state.edit})
+        this.props.history.push(`/form/${this.props.products.product_id}`)
     }
 
 
@@ -40,12 +42,15 @@ class Product extends Component{
     render(){
         const {edit, name, price, pic} = this.state;
         const {product_id} = this.props.products;
+
         const {deleteProduct, editProduct} = this.props;
         return(
             <div>
                 {!edit ? 
                 <div className= 'display-box'>
-                    <h1>{this.props.products.pic}</h1>
+                    {/* <h1>{this.props.products.pic}</h1>
+                     */}
+                     <img src= {this.props.products.img}/>
                     <h1>{this.props.products.name}</h1>
                     <h1>{this.props.products.price}</h1>
                     <button onClick = {() => this.editToggle()}>edit</button>
@@ -88,4 +93,4 @@ class Product extends Component{
 
 
 }
-export default Product
+export default withRouter(Product)

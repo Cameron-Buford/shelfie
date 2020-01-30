@@ -21,6 +21,7 @@ massive(CONNECTION_STRING).then(db => {
 
 //endpoints
 app.get(inventoryUrl, productCtrl.getProducts)
+app.get('/api/product/:product_id', productCtrl.getProduct)
 app.post(inventoryUrl, productCtrl.postProduct)
 app.put(`${inventoryUrl}/:product_id`, productCtrl.putProduct)
 app.delete(`${inventoryUrl}/:product_id`, productCtrl.deleteProduct)

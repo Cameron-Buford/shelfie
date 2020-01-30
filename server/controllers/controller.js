@@ -9,6 +9,20 @@ module.exports = {
             })
 
     },
+
+    getProduct: (req, res) => {
+        const db = req.app.get('db')
+        const {product_id} = req.params
+        console.log('anything')
+        db.get_product(product_id).then(products => {
+            console.log(products)
+            res.status(200).send(products)
+        }).catch(err => {
+            res.status(500).send(err)
+        })
+    },
+
+
     postProduct: (req, res) => {
         const db = req.app.get('db')
             const {name, price, pic} = req.body;
